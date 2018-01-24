@@ -34,17 +34,6 @@
  * 返回一个数组，格式见函数中示例
  */
 function getData() {
-  /*
-  coding here
-  */
-
-  /*
-  data = [
-    ["北京", 90],
-    ["北京", 90]
-    ……
-  ]
-  */
   var data = [];
   var source = document.getElementById("source");
   var li = source.getElementsByTagName("li");
@@ -67,7 +56,8 @@ function sortAqiData(data) {
     return a[1] - b[1];
   });
   return data;
-    
+}
+
 /**
  * render
  * 将排好序的城市及空气质量指数，输出显示到id位resort的列表中
