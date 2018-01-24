@@ -12,3 +12,7 @@
  </br>
 
  详情见 <a href = "http://ife.baidu.com/course/detail/id/103">任务四：基础JavaScript练习（一）</a>
+
+## 展示
+
+<a href="http://htmlpreview.github.com/?https://github.com/QM36/baiduAssignment/blob/master/%E4%BB%BB%E5%8A%A1%E5%9B%9B/%E5%9F%BA%E7%A1%80%E4%BB%BB%E5%8A%A1%E4%B8%80.html">demo</a>
