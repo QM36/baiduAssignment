@@ -25,14 +25,11 @@
 <script type="text/javascript">
 	var element = document.getElementById("input");
 	var source = document.getElementById("source");
-	var arr = [];
 	function leftin() {
 		if (element.value === '') {
 			alert('输入数值');
 			return;
 		}
-		// arr.unshift('<div>' + element.value + '</div>');
-		// source.innerHTML = arr.join('');
 		var div = document.createElement("div");
 		var node = document.createTextNode(element.value);
 		div.appendChild(node);
@@ -43,11 +40,6 @@
 			alert('先输数值');
 			return;
 		}
-		// if (arr.length === 0) {
-		// 	return;
-		// }
-		// arr.shift();
-		// source.innerHTML = arr.join('');
 		alert(source.firstChild.innerHTML);
 		source.removeChild(source.firstChild);
 	}
@@ -56,19 +48,15 @@
 			alert('输入数值');
 			return;
 		}
-		// arr.push('<div>' + element.value + '</div>');
-		// source.innerHTML = arr.join('');
 		var div = document.createElement("div");
 		var node = document.createTextNode(element.value);
 		div.appendChild(node);
 		source.appendChild(div);	
 	}
 	function rightout() {
-		if (arr.length === 0) {
+		if (!source.lastChild) {
 			return;
 		}
-		// arr.pop();
-		// source.innerHTML = arr.join('');
 		alert(source.lastChild.innerHTML);
 		source.removeChild(source.lastChild);
 	}
