@@ -31,6 +31,10 @@
 			return;
 		}
 		var div = document.createElement("div");
+		div.onclick = function() {
+			alert(this.innerHTML);
+			source.removeChild(this);
+		}
 		var node = document.createTextNode(element.value);
 		div.appendChild(node);
 		source.insertBefore(div,source.firstChild);
@@ -50,6 +54,10 @@
 		}
 		var div = document.createElement("div");
 		var node = document.createTextNode(element.value);
+		div.onclick = function() {
+			alert(this.innerHTML);
+			source.removeChild(this);
+		}
 		div.appendChild(node);
 		source.appendChild(div);	
 	}
