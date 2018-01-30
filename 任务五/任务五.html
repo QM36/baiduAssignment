@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>基础任务二</title>
+	<style type="text/css">
+		#source div {
+			width: 20px;
+			background-color: #F44336;
+			border: 1px solid #F44336;
+            display: inline-block;
+            margin: 5px;
+		}
+		#source div: hover {
+			background: #ddd;
+		}
+	</style>
+</head>
+<body>
+     <input id="input">
+     <button id="leftin">左侧入</button>
+     <button id="rightin">右侧入</button>
+     <button id="leftout">左侧出</button>
+     <button id="rightout">右侧出</button>
+     <div id = "source"></div>
+     <button id="sort">排序</button>
+<script type="text/javascript">
+	var element = document.getElementById("input");
+	var source = document.getElementById("source");
+	var counter = 0;
+	var data = [];
+	function leftin() {
+		if (element.value === '') {
+			alert('输入数值');
+			return;
+		}
+
+		if (Number(element.value) < 10 || Number(element.value) > 100) {
+			alert("请输入10到100的数字");
+			return;
+		}
+		if (counter > 60) {
+			alert("最多插入60个");
+		}
+		data.push(element.value);
+		var div = document.createElement("div");
+		div.onclick = function() { /* 给每一个插入的块级元素绑定事件，使得点击改元素可以被点击之后删除*/
+			alert(this.style.height);
+			source.removeChild(this);
+		} 
+		div.style.height = element.value + "px";     
+		source.insertBefore(div,source.firstChild);
+		counter++;
+	}
+	function leftout() {
+		if (!source.firstChild) {
+			alert('先输数值');
+			return;
+		}
+		alert(source.firstChild.style.height);
+		source.removeChild(source.firstChild);
+		counter--;
+	}
+	function rightin() {
+		if (element.value === '') {
+			alert('输入数值');
+			return;
+		}
+		if (counter > 60) {
+			alert("最多插入60个");
+		}
+		if (Number(element.value) < 10 || Number(element.value) > 100) {
+			alert("请输入10到100的数字");
+			return;
+		}
+		data.push(element.value);
+		var div = document.createElement("div");
+		div.style.height = element.value + "px";
+		div.onclick = function() {
+			alert(this.style.height);
+			source.removeChild(this);
+		}
+		source.appendChild(div);
+		counter++;	
+	}
+	function rightout() {
+		if (!source.lastChild) {
+			return;
+		}
+		alert(source.lastChild.style.height);
+		source.removeChild(source.lastChild);
+		counter--;
+	}
+	function sortfun() {
+		data.sort(function (a,b) {
+			return a - b;
+		});
+		return data;
+	}
+	function render() {
+		sortfun();
+		var sort = document.getElementById("source");
+		// for (var i = 0; i < data.length; i++) {
+		// 	sort.removeChild(sort.firstChild);
+		// }
+		for (var i = 0; i < data.length; i++) {
+			sort.removeChild(sort.firstChild);
+			var node = document.createElement("div");
+			node.style.height = data[i] + "px";
+			sort.appendChild(node);
+		}
+	}
+	document.getElementById('sort').onclick = render;
+	document.getElementById('leftin').onclick = leftin;
+	document.getElementById('leftout').onclick = leftout;
+	document.getElementById('rightout').onclick = rightout;
+	document.getElementById('rightin').onclick = rightin;
+</script>
+</body>
+</html>
