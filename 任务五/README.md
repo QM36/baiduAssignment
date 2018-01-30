@@ -8,4 +8,5 @@
 详情见<a href="http://ife.baidu.com/course/detail/id/105">任务五：基础JavaScript练习（二）</a>
 
 ## 任务展示
-<a href="#">demo</a>
+<a href="http://QM36.github.io/baiduAssignment/任务五/任务五.html">demo</a>
+
