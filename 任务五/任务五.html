@@ -121,6 +121,10 @@
 		for (var i = 0; i < data.length; i++) {
 			sort.removeChild(sort.firstChild);
 			var node = document.createElement("div");
+			node.onclick = function() { /* 给每一个插入的块级元素绑定事件，使得点击改元素可以被点击之后删除*/
+			alert(parseInt(this.style.height));
+			source.removeChild(this);
+		    } 
 			node.style.height = data[i] + "px";
 			sort.appendChild(node);
 		}
