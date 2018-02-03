@@ -28,7 +28,7 @@
      	<option value="0">清除内容</option>
      	<option value="1">不清除内容</option>
      </select>
-<script type="text/javascript">
+    <script type="text/javascript">
 	var element = document.getElementById("input");
 	var source = document.getElementById("source");
 	var counter = 0;
@@ -68,6 +68,9 @@
 		alert(parseInt(source.firstChild.style.height));
 		source.removeChild(source.firstChild);
 		counter--;
+		if (set.value == 0) {
+			element.value = "";
+		}	
 	}
 	function rightin() {
 		if (element.value === '') {
@@ -102,6 +105,9 @@
 		alert(parseInt(source.lastChild.style.height));
 		source.removeChild(source.lastChild);
 		counter--;
+		if (set.value == 0) {
+			element.value = "";
+		}	
 	}
 	function sortfun() {
 		data.sort(function (a,b) {
