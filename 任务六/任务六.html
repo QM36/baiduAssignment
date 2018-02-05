@@ -17,7 +17,7 @@
 			border-color: #ddd; 
 		}
 		.found {
-			background-color:#fff;
+			color:#fff !important;
 		}
 	</style>
 </head>
@@ -40,7 +40,7 @@
 			return;
 		}
 		var array = [];
-		array = element.value.split(/,|，|、|\s|\n|\r|\t/);
+		array = element.value.split(" ");
 		array.forEach (function (value) {
 			var div = document.createElement("div");
 			div.onclick = function () {
@@ -49,7 +49,7 @@
 			}
 			for (var i = 0; i < value.length; i++) {
 				var span = document.createElement("span");
-				var node = document.createTextNode(value.substr(0,1))
+				var node = document.createTextNode(value[i])
 				span.appendChild(node);
 				div.appendChild(span);
 			}
@@ -72,7 +72,7 @@
 			return;
 		}
 		var array = [];
-		array = element.value.split(/,|，|、|\s|\n|\r|\t/);
+		array = element.value.split(" ");
 		array.forEach(function (value) {
 			var div = document.createElement("div");
 			div.onclick = function () {
@@ -81,7 +81,7 @@
 			}
 			for (var i = 0; i < value.length; i++) {
 				var span = document.createElement("span");
-				var node = document.createTextNode(value.substr(0,1))
+				var node = document.createTextNode(value[i])
 				span.appendChild(node);
 				div.appendChild(span);
 			}
@@ -100,8 +100,13 @@
 	function select() {
 		var select = document.getElementById("select");
 		for (var i = 0; i < counter; i++) {
-			if (source.childNodes[i].innerText.match(select.value)) {
-				source.childNodes[i].className = "found";
+			for (var j = 0; j < source.childNodes[i].childNodes.length; j++) {
+				if (select.value.match(source.childNodes[i].childNodes[j].innerText)) {
+				source.childNodes[i].childNodes[j].className = "found";
+			    }
+				else { 
+					source.childNodes[i].childNodes[j].className = " ";
+				}
 			}
 		}
 	}
