@@ -40,6 +40,7 @@ function getData() {
   for (var i = 0; i < li.length; i++) {
     var bs = li[i].getElementsByTagName('b');
     data.push([li[i].innerText.substr(0,2),Number(bs[0].innerText)]);
+    
   }
   return data;
 }
