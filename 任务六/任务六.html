@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>基础任务三</title>
+	<style type="text/css">
+		#source div {
+			width: 50px;
+			height: 50px;
+			background-color: #F44336;
+            line-height: 50px;
+            text-align: center;
+            display: inline-block;
+            margin: 2px;
+		}
+		#source div:hover {
+			background: #ddd;
+			border-color: #ddd; 
+		}
+		.found {
+			background-color:#fff;
+		}
+	</style>
+</head>
+<body>
+     <textarea id="input"></textarea>
+     <button id="leftin">左侧入</button>
+     <button id="rightin">右侧入</button>
+     <button id="leftout">左侧出</button>
+     <button id="rightout">右侧出</button>
+     <div id = "source"></div><br>
+     <input id="select">
+     <button id="match">查询</button>
+<script type="text/javascript">
+	var element = document.getElementById("input");
+	var source = document.getElementById("source");
+	var counter = 0;
+	function leftin() {
+		if (element.value === '') {
+			alert('输入数值');
+			return;
+		}
+		var array = [];
+		array = element.value.split(/,|，|、|\s|\n|\r|\t/);
+		array.forEach (function (value) {
+			var div = document.createElement("div");
+			div.onclick = function () {
+				alert(this.innerHTML);
+				source.removeChild(this);
+			}
+			for (var i = 0; i < value.length; i++) {
+				var span = document.createElement("span");
+				var node = document.createTextNode(value.substr(0,1))
+				span.appendChild(node);
+				div.appendChild(span);
+			}
+			source.insertBefore(div,source.firstChild);
+			counter++;
+		});
+	}
+	function leftout() {
+		if (!source.firstChild) {
+			alert('先输数值');
+			return;
+		}
+		alert(source.firstChild.innerHTML);
+		source.removeChild(source.firstChild);
+		counter--;
+	}
+	function rightin() {
+		if (element.value === '') {
+			alert('输入数值');
+			return;
+		}
+		var array = [];
+		array = element.value.split(/,|，|、|\s|\n|\r|\t/);
+		array.forEach(function (value) {
+			var div = document.createElement("div");
+			div.onclick = function () {
+				alert(this.innerHTML);
+				source.removeChild(this);
+			}
+			for (var i = 0; i < value.length; i++) {
+				var span = document.createElement("span");
+				var node = document.createTextNode(value.substr(0,1))
+				span.appendChild(node);
+				div.appendChild(span);
+			}
+			source.appendChild(div);
+			counter++;
+		});	
+	}
+	function rightout() {
+		if (!source.lastChild) {
+			return;
+		}
+		alert(source.lastChild.innerHTML);
+		source.removeChild(source.lastChild);
+		counter--;
+	}
+	function select() {
+		var select = document.getElementById("select");
+		for (var i = 0; i < counter; i++) {
+			if (source.childNodes[i].innerText.match(select.value)) {
+				source.childNodes[i].className = "found";
+			}
+		}
+	}
+	document.getElementById('leftin').onclick = leftin;
+	document.getElementById('leftout').onclick = leftout;
+	document.getElementById('rightout').onclick = rightout;
+	document.getElementById('rightin').onclick = rightin;
+	document.getElementById('match').onclick = select;
+</script>
+</body>
+</html>
