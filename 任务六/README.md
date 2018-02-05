@@ -7,4 +7,4 @@
 详情见[任务六：基础JavaScript练习（三）](http://ife.baidu.com/course/detail/id/107)
 
 ## 任务展示
-[demo]()
+[demo](http://QM36.github.io/baiduAssignment/任务六/任务六.html)
